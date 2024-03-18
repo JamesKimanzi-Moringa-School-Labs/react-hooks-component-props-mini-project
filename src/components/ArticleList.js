@@ -2,14 +2,14 @@ import React from "react";
 import Article from "./Article";
 
 function ArticleList({ posts }) {
-
-  if (!Array.isArray(posts)) {
+  // Check if posts is defined and is an array before mapping over it
+  if (!posts || !Array.isArray(posts)) {
     console.error("Posts must be an array.");
     return null;
   }
 
   const blogArticles = posts.map((post) => (
-    <Article
+    <Article 
       key={post.id}
       title={post.title}
       date={post.date}
@@ -17,7 +17,9 @@ function ArticleList({ posts }) {
     />
   ));
 
-  return <main>{blogArticles}</main>;
+  return (
+    <main>{blogArticles}</main>
+  );
 }
 
 export default ArticleList;
